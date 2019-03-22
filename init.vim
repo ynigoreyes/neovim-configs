@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
   let g:ctrlp_working_path_mode = 'ra'
   Plug 'majutsushi/tagbar'
   Plug 'tpope/vim-fugitive'
+  Plug 'sebdah/vim-delve'
 
   " Tmux "
   Plug 'christoomey/vim-tmux-navigator'
@@ -69,7 +70,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'jelera/vim-javascript-syntax'
   Plug 'mxw/vim-jsx'
   let g:javascript_plugin_flow = 1
-  let g:jsx_ext_required = 1
+  let g:jsx_ext_required = 0
   let g:ale_linters = {'javascript': ['eslint']}
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   " Deoplete
@@ -156,8 +157,10 @@ call plug#begin('~/.vim/plugged')
   let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 
   " Makefile (must use 'makefile' in vim)
-  autocmd BufRead,BufNewFile makefile set noexpandtab
-  autocmd BufRead,BufNewFile makefile set tabstop=4
+  autocmd BufRead,BufNewFile make set noexpandtab
+  autocmd BufRead,BufNewFile make set tabstop=4
+  autocmd BufRead,BufNewFile make set softtabstop=4
+  autocmd BufRead,BufNewFile make set shiftwidth=4
 
   " Markdown Configs
   Plug 'iamcco/markdown-preview.vim'
