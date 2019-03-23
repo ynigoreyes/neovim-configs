@@ -72,24 +72,25 @@ call plug#begin('~/.vim/plugged')
   let g:javascript_plugin_flow = 1
   let g:jsx_ext_required = 0
   let g:ale_linters = {'javascript': ['eslint']}
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  " Deoplete
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
+  Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'carlitux/deoplete-ternjs'
+
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#enable_yarp=1
+  let g:deoplete#enable_ignore_case = 1
+  let g:deoplete#enable_smart_case = 1
+  let g:deoplete#enable_camel_case = 1
+  let g:deoplete#enable_refresh_always = 1
+  let g:deoplete#max_abbr_width = 0
+  let g:deoplete#max_menu_width = 0
+  let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+  let g:tern_request_timeout = 1
+  let g:tern_request_timeout = 6000
+  let g:tern#command = ['tern']
+  let g:tern#arguments = [' — persistent']
+
   set completeopt-=preview
   set encoding=utf-8
-  let g:python_host_prog = '/usr/local/bin/python'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-  let g:deoplete#sources#ternjs#tern_bin = '/Users/miggylol/.nvm/versions/node/v8.12.0/bin/tern'
-  let g:deoplete#sources#ternjs#types = 1
-  let g:deoplete#sources#ternjs#docs = 1
 
   " TypeScripts Config
   Plug 'leafgarland/typescript-vim'
